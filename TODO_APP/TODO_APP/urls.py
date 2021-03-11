@@ -15,10 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from trello_app import views
-import trello_app
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('trello_app.urls')),
+    path('task/', include('trello_app.urls')),
+    path('', include('accounts.urls')),
 ]
