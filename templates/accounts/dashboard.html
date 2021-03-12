@@ -13,7 +13,13 @@
     <h2>All Task List</h2>
     <ul>
     {% for task_list in task_lists %}
-    <li> {{ task_list.name }} </li>
+    <li> {{ task_list }} </li>
+    {% endfor %}
+    </ul>
+    <h2>All Task</h2>
+    <ul>
+    {% for task in tasks %}
+    <li> {{ task.content }} </li>
     {% endfor %}
     </ul>
     

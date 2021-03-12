@@ -4,6 +4,7 @@ from .forms import CreateUser
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from trello_app.models import Task,TaskList
 # Create your views here.
 
 def home(request):
@@ -43,5 +44,5 @@ def logout(request):
 def dashboard(request):
     user = request.user
     task_lists = user.tasklist_set.all()
-
-    return render(request, "accounts/dashboard.html", {'task_lists ' : task_lists})
+    tasks = Task.objects.filter(task_list__in=task_lists)
+    return render(request, "accounts/dashboard.html", {"task_lists":task_lists, "tasks":tasks })
